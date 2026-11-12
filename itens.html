@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Itens - Smart Luny</title>
+
+    <link rel="icon" type="image/png" href="./assets/imagem logo.png">
+
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/mercadorias.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+</head>
+
+<body>
+
+    <main class="pagina-itens">
+
+        <header class="cabecalho-pagina">
+
+            <img
+                src="./assets/imagem logo.png"
+                alt="Smart Luny"
+                class="logo-pagina"
+            >
+
+            <div class="cabecalho-titulo">
+                <h1 id="tituloItens">Itens</h1>
+                <p id="descricaoItens">
+                    Registe e acompanhe os itens do seu stock.
+                </p>
+            </div>
+
+        </header>
+
+        <section class="form-card">
+
+            <h2 id="tituloAdicionarItem">Adicionar item</h2>
+
+            <form id="formItem">
+
+                <div class="campo">
+                    <label for="nome" id="labelNome">Nome do item</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="quantidade" id="labelQuantidade">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidade"
+                        name="quantidade"
+                        min="0"
+                        step="0.01"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="unidade" id="labelUnidade">
+                        Unidade
+                    </label>
+
+                    <select id="unidade" name="unidade" required>
+                        <option value="Unidade">Unidade</option>
+                        <option value="Kg">Kg</option>
+                        <option value="g">g</option>
+                        <option value="Litro">Litro</option>
+                        <option value="ml">ml</option>
+                        <option value="Caixa">Caixa</option>
+                        <option value="Embalagem">Embalagem</option>
+                        <option value="Pacote">Pacote</option>
+                        <option value="Dúzia">Dúzia</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="precoCompra" id="labelPrecoCompra">
+                        Preço de compra
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precoCompra"
+                        name="precoCompra"
+                        min="0"
+                        step="0.01"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="precoVenda" id="labelPrecoVenda">
+                        Preço de venda
+                    </label>
+
+                    <input
+                        type="number"
+                        id="precoVenda"
+                        name="precoVenda"
+                        min="0"
+                        step="0.01"
+                    >
+                </div>
+
+                <div class="campo">
+                    <label for="moedaItem" id="labelMoeda">
+                        Moeda
+                    </label>
+
+                    <select id="moedaItem" name="moedaItem">
+                        <option value="MZN">MZN</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BRL">BRL</option>
+                    </select>
+                </div>
+
+                <button
+                    type="submit"
+                    id="btnGuardar"
+                    title="Guardar item"
+                    aria-label="Guardar item"
+                >
+                    ↓
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="resumo-stock">
+
+            <h2 id="tituloResumo">Resumo</h2>
+
+            <div class="resumo-grid">
+
+                <div class="resumo-item">
+                    <span id="labelTotalItens">Total de itens</span>
+                    <strong id="totalItens">0</strong>
+                </div>
+
+                <div class="resumo-item">
+                    <span id="labelQuantidadeTotal">
+                        Quantidade total
+                    </span>
+                    <strong id="quantidadeTotal">0</strong>
+                </div>
+
+                <div class="resumo-item">
+                    <span id="labelValorStock">
+                        Valor do stock
+                    </span>
+                    <strong id="valorStock">0 MZN</strong>
+                </div>
+
+                <div class="resumo-item">
+                    <span id="labelValorPotencial">
+                        Valor potencial
+                    </span>
+                    <strong id="valorPotencial">0 MZN</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="filtros-card">
+
+            <div class="campo">
+                <label for="pesquisaItem" id="labelPesquisa">
+                    Pesquisar
+                </label>
+
+                <input
+                    type="search"
+                    id="pesquisaItem"
+                    placeholder="Pesquisar item..."
+                >
+            </div>
+
+            <div class="campo">
+                <label for="filtroStock" id="labelFiltroStock">
+                    Stock
+                </label>
+
+                <select id="filtroStock">
+                    <option value="todos">Todos</option>
+                    <option value="disponivel">Disponível</option>
+                    <option value="baixo">Stock baixo</option>
+                    <option value="esgotado">Esgotado</option>
+                </select>
+            </div>
+
+        </section>
+
+        <section class="table-card">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th id="colunaNome">Nome</th>
+                        <th id="colunaQuantidade">Quantidade</th>
+                        <th id="colunaUnidade">Unidade</th>
+                        <th id="colunaPrecoCompra">
+                            Preço de compra
+                        </th>
+                        <th id="colunaPrecoVenda">
+                            Preço de venda
+                        </th>
+                        <th id="colunaAcoes">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaMercadorias"></tbody>
+
+            </table>
+
+            <p id="listaVazia">
+                Ainda não existem itens registados.
+            </p>
+
+        </section>
+
+    </main>
+
+    <nav class="bottom-nav">
+
+        <a href="inicio.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 10.5L12 3l9 7.5"></path>
+                <path d="M5 9.5V21h14V9.5"></path>
+                <path d="M9 21v-7h6v7"></path>
+            </svg>
+            <span id="menuInicio">Início</span>
+        </a>
+
+        <a href="transacoes.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 18h16"></path>
+                <path d="M8 3v6"></path>
+                <path d="M16 15v6"></path>
+            </svg>
+            <span id="menuTransacoes">Transações</span>
+        </a>
+
+        <a href="itens.html" class="ativo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7l8-4 8 4-8 4-8-4z"></path>
+                <path d="M4 7v10l8 4 8-4V7"></path>
+                <path d="M12 11v10"></path>
+            </svg>
+            <span id="menuItens">Itens</span>
+        </a>
+
+        <a href="historico.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+                <path d="M3 4v5h5"></path>
+                <path d="M12 7v5l3 2"></path>
+            </svg>
+            <span id="menuHistorico">Histórico</span>
+        </a>
+
+        <a href="configuracoes.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span id="menuConfiguracoes">Configurações</span>
+        </a>
+
+    </nav>
+
+    <script type="module" src="./js/itens.js"></script>
+
+</body>
+</html>

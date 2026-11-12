@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Início - Smart Luny</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/mobile.css">
+
+    <style>
+        body {
+            background: #eaf4ff;
+            overflow-x: hidden;
+        }
+
+        .layout {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(120deg, #eef7ff, #d8ecff, #f4f9ff, #cfe7ff, #e8f4ff, #d7ebff);
+            background-size: 400% 400%;
+            animation: fundoAzul 18s ease infinite;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 100px;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .logo-topo {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .info-negocio {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page-header h2 {
+            color: #0d6efd;
+            margin: 0 0 8px;
+            font-size: 26px;
+            line-height: 1.2;
+        }
+
+        .page-header p {
+            color: #555;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .area-plano {
+            margin-left: auto;
+            padding-left: 35px;
+            min-width: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 7px;
+        }
+
+        .plano-atual {
+            color: #0d6efd;
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .upgrade-link {
+            color: #0d6efd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .upgrade-link:hover {
+            text-decoration: underline;
+        }
+
+        .secao-situacao-financeira {
+            margin-bottom: 15px;
+        }
+
+        .secao-situacao-financeira h3 {
+            color: #0d6efd;
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .cards .card {
+            flex: 1;
+            min-width: 180px;
+            background: #0d6efd;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .cards .card h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: white;
+        }
+
+        .cards .card p {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+        #secaoStock {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        #secaoStock h3 {
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        #resumoStock {
+            color: #555;
+            margin: 0;
+        }
+
+        .lista-stock {
+            width: 100%;
+            border: 1px solid #e5edf7;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .linha-stock {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 14px;
+            border-bottom: 1px solid #e8eef5;
+        }
+
+        .linha-stock:last-child {
+            border-bottom: none;
+        }
+
+        .nome-stock {
+            color: #333;
+            font-weight: 600;
+            min-width: 0;
+            word-break: break-word;
+        }
+
+        .quantidade-stock {
+            color: #0d6efd;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        #secaoHistoricoRecente {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .cabecalhoHistoricoRecente {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .cabecalhoHistoricoRecente h3 {
+            color: #0d6efd;
+            margin-bottom: 5px;
+        }
+
+        .cabecalhoHistoricoRecente p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        #verTodosHistoricos {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        #verTodosHistoricos:hover {
+            text-decoration: underline;
+        }
+
+        .movimento-recente {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid #e8eef5;
+        }
+
+        .movimento-recente:last-child {
+            border-bottom: none;
+        }
+
+        .icone-movimento {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .icone-receita {
+            background: #e8f7ee;
+            color: #198754;
+        }
+
+        .icone-despesa {
+            background: #fdeaea;
+            color: #dc3545;
+        }
+
+        .detalhes-movimento {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .titulo-movimento {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .info-movimento {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .valor-movimento {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .valor-receita {
+            color: #198754;
+        }
+
+        .valor-despesa {
+            color: #dc3545;
+        }
+
+        .tag-movimento {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .tag-receita {
+            background: #e8f7ee;
+            color: #198754;
+        }
+
+        .tag-despesa {
+            background: #fdeaea;
+            color: #dc3545;
+        }
+
+        .sem-movimentos {
+            text-align: center;
+            color: #777;
+            padding: 20px 0;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 10px;
+            background: #ffffff;
+            border-top: 1px solid #dbe7f5;
+            box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .bottom-nav a {
+            min-width: 100px;
+            height: 58px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #555;
+            box-sizing: border-box;
+        }
+
+        .bottom-nav a:hover {
+            color: #0d6efd;
+        }
+
+        .bottom-nav a.ativo,
+        .bottom-nav a.active {
+            color: #0d6efd;
+            font-weight: 700;
+        }
+
+        .bottom-nav a svg {
+            width: 23px;
+            height: 23px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .bottom-nav a span {
+            font-size: 12px;
+            line-height: 1.1;
+            white-space: nowrap;
+        }
+
+        @keyframes fundoAzul {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 100%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 700px) {
+            .page-header {
+                gap: 12px;
+                margin-bottom: 20px;
+                align-items: flex-start;
+            }
+
+            .logo-topo {
+                width: 54px;
+                height: 54px;
+            }
+
+            .info-negocio {
+                min-width: 0;
+            }
+
+            .page-header h2 {
+                font-size: 21px;
+            }
+
+            .page-header p {
+                font-size: 14px;
+            }
+
+            .area-plano {
+                padding-left: 8px;
+                min-width: 120px;
+                gap: 5px;
+            }
+
+            .plano-atual,
+            .upgrade-link {
+                font-size: 12px;
+            }
+
+            .secao-situacao-financeira h3 {
+                font-size: 20px;
+            }
+
+            .cabecalhoHistoricoRecente {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            #verTodosHistoricos {
+                font-size: 14px;
+            }
+
+            .movimento-recente {
+                gap: 10px;
+            }
+
+            .valor-movimento {
+                font-size: 14px;
+            }
+
+            .linha-stock {
+                padding: 11px 12px;
+                gap: 12px;
+            }
+
+            .nome-stock,
+            .quantidade-stock {
+                font-size: 14px;
+            }
+        }
+
+        .botao-assistente-smart {
+            position: fixed;
+            right: 22px;
+            bottom: 92px;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 19px;
+            border: none;
+            border-radius: 30px;
+            background: #0d6efd;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(13, 110, 253, 0.3);
+            cursor: pointer;
+        }
+
+        .botao-assistente-smart span:first-child {
+            font-size: 23px;
+            line-height: 1;
+        }
+
+        .botao-assistente-smart:hover {
+            background: #0b5ed7;
+        }
+
+        .janela-assistente-smart {
+            position: fixed;
+            right: 22px;
+            bottom: 155px;
+            z-index: 1101;
+            display: none;
+            flex-direction: column;
+            width: 360px;
+            max-width: calc(100vw - 28px);
+            height: 500px;
+            max-height: calc(100dvh - 180px);
+            background: #fff;
+            border: 1px solid #d8e8fb;
+            border-radius: 16px;
+            box-shadow: 0 8px 35px rgba(20, 70, 130, 0.2);
+            overflow: hidden;
+        }
+
+        .janela-assistente-smart.aberta {
+            display: flex;
+        }
+
+        .janela-assistente-smart.minimizada {
+            display: none;
+        }
+
+        .cabecalho-assistente-smart {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 16px;
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        .identidade-assistente-smart {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icone-assistente-smart {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 25px;
+        }
+
+        .identidade-assistente-smart strong,
+        .identidade-assistente-smart span {
+            display: block;
+        }
+
+        .identidade-assistente-smart strong {
+            font-size: 15px;
+        }
+
+        .identidade-assistente-smart span {
+            margin-top: 3px;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .acoes-assistente-smart {
+            display: flex;
+            gap: 7px;
+        }
+
+        .acoes-assistente-smart button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        .mensagens-assistente-smart {
+            flex: 1;
+            min-height: 0;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f5f9ff;
+        }
+
+        .mensagem-assistente-smart {
+            display: flex;
+            margin-bottom: 12px;
+        }
+
+        .mensagem-assistente-smart.assistente {
+            justify-content: flex-start;
+        }
+
+        .mensagem-assistente-smart.utilizador {
+            justify-content: flex-end;
+        }
+
+        .balao-assistente-smart {
+            max-width: 85%;
+            padding: 11px 13px;
+            border-radius: 13px;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .mensagem-assistente-smart.utilizador .balao-assistente-smart {
+            background: #0d6efd;
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .mensagem-assistente-smart.assistente .balao-assistente-smart {
+            border-bottom-left-radius: 4px;
+        }
+
+        .balao-assistente-smart p {
+            margin: 0 0 8px;
+        }
+
+        .balao-assistente-smart p:last-child {
+            margin-bottom: 0;
+        }
+
+        .balao-assistente-smart ul,
+        .balao-assistente-smart ol {
+            padding-left: 21px;
+            margin: 7px 0;
+        }
+
+        .balao-assistente-smart li {
+            margin-bottom: 4px;
+        }
+
+        .formulario-assistente-smart {
+            display: flex;
+            gap: 9px;
+            padding: 12px;
+            border-top: 1px solid #e1ebf7;
+            background: #fff;
+        }
+
+        .formulario-assistente-smart input {
+            flex: 1;
+            min-width: 0;
+            padding: 11px 13px;
+            border: 1px solid #d5e3f3;
+            border-radius: 22px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .formulario-assistente-smart input:focus {
+            border-color: #0d6efd;
+        }
+
+        .formulario-assistente-smart button {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            border: none;
+            border-radius: 50%;
+            background: #0d6efd;
+            color: #fff;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .formulario-assistente-smart button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .botao-fale-connosco {
+            display: block;
+            margin-top: 10px;
+            padding: 9px 14px;
+            border: none;
+            border-radius: 20px;
+            background: #0d6efd;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .area-botao-voltar-assistente {
+            display: flex;
+            justify-content: center;
+            margin: 12px 0;
+        }
+
+        .area-botao-voltar-assistente button {
+            padding: 9px 14px;
+            border: 1px solid #0d6efd;
+            border-radius: 20px;
+            background: #fff;
+            color: #0d6efd;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .balao-indicador {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            min-width: 52px;
+            padding: 14px;
+        }
+
+        .ponto-resposta {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #0d6efd;
+            animation: animarPonto 1.2s infinite ease-in-out;
+        }
+
+        .ponto-resposta:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .ponto-resposta:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes animarPonto {
+            0%, 60%, 100% {
+                opacity: 0.35;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-4px);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .botao-assistente-smart {
+                right: 14px;
+                bottom: 86px;
+                padding: 11px 15px;
+                font-size: 14px;
+            }
+
+            .janela-assistente-smart {
+                right: 10px;
+                bottom: 145px;
+                width: calc(100vw - 20px);
+                max-width: none;
+                height: min(500px, calc(100dvh - 165px));
+                max-height: calc(100dvh - 165px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <main class="content">
+
+            <header class="page-header">
+
+                <img src="./assets/imagem logo.png" alt="Smart Luny" class="logo-topo">
+
+                <div class="info-negocio">
+                    <h2 id="nomeEmpresa">Carregando...</h2>
+                    <p id="subtituloNegocio">Carregando...</p>
+                </div>
+
+                <div class="area-plano">
+                    <span id="planoAtual" class="plano-atual">Smart Grátis</span>
+                    <a href="fazer-upgrade.html" id="linkUpgrade" class="upgrade-link">Fazer Upgrade</a>
+                </div>
+
+            </header>
+
+            <section class="secao-situacao-financeira">
+                <h3 id="tituloSituacaoFinanceira">Situação Financeira</h3>
+            </section>
+
+            <section class="cards">
+
+                <div class="card">
+                    <h3 id="tituloSaldo">Saldo Actual</h3>
+                    <p id="saldoAtual">0,00 MT</p>
+                </div>
+
+                <div class="card">
+                    <h3 id="tituloReceitas">Total de Receitas</h3>
+                    <p id="totalReceitas">0,00 MT</p>
+                </div>
+
+                <div class="card">
+                    <h3 id="tituloDespesas">Total de Despesas</h3>
+                    <p id="totalDespesas">0,00 MT</p>
+                </div>
+
+            </section>
+
+            <section id="secaoStock">
+
+                <h3 id="tituloStock">Stock</h3>
+
+                <div id="resumoStock" class="lista-stock"></div>
+
+            </section>
+
+            <section id="secaoHistoricoRecente">
+
+                <div class="cabecalhoHistoricoRecente">
+
+                    <div>
+                        <h3 id="tituloHistoricoRecente">Movimentações Recentes</h3>
+                        <p id="descricaoHistoricoRecente">Veja as últimas movimentações do seu negócio.</p>
+                    </div>
+
+                    <a href="historico.html" id="verTodosHistoricos">Ver todos os históricos</a>
+
+                </div>
+
+                <div id="listaHistoricoRecente"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <nav class="bottom-nav">
+
+        <a href="inicio.html" class="ativo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 10.5L12 3l9 7.5"></path>
+                <path d="M5 9.5V21h14V9.5"></path>
+                <path d="M9 21v-7h6v7"></path>
+            </svg>
+            <span id="menuInicio">Início</span>
+        </a>
+
+        <a href="transacoes.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 18h16"></path>
+                <path d="M8 3v6"></path>
+                <path d="M16 15v6"></path>
+            </svg>
+            <span id="menuTransacoes">Transações</span>
+        </a>
+
+        <a href="itens.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7l8-4 8 4-8 4-8-4z"></path>
+                <path d="M4 7v10l8 4 8-4V7"></path>
+                <path d="M12 11v10"></path>
+            </svg>
+            <span id="menuItens">Itens</span>
+        </a>
+
+        <a href="historico.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+                <path d="M3 4v5h5"></path>
+                <path d="M12 7v5l3 2"></path>
+            </svg>
+            <span id="menuHistorico">Histórico</span>
+        </a>
+
+        <a href="configuracoes.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span id="menuConfiguracoes">Configurações</span>
+        </a>
+
+    </nav>
+
+    <button id="botaoAssistenteSmart" class="botao-assistente-smart" type="button" aria-label="Abrir Assistente Smart" aria-expanded="false">
+        <span>✦</span>
+        <span>Assistente Smart</span>
+    </button>
+
+    <section id="janelaAssistenteSmart" class="janela-assistente-smart" aria-hidden="true">
+
+        <header class="cabecalho-assistente-smart">
+
+            <div class="identidade-assistente-smart">
+                <div class="icone-assistente-smart">✦</div>
+                <div>
+                    <strong>Assistente Smart</strong>
+                    <span>Assistente virtual</span>
+                </div>
+            </div>
+
+            <div class="acoes-assistente-smart">
+                <button id="minimizarAssistenteSmart" type="button" aria-label="Minimizar">−</button>
+                <button id="fecharAssistenteSmart" type="button" aria-label="Fechar">×</button>
+            </div>
+
+        </header>
+
+        <div id="mensagensAssistenteSmart" class="mensagens-assistente-smart"></div>
+
+        <form id="formularioAssistenteSmart" class="formulario-assistente-smart">
+
+            <input
+                id="inputAssistenteSmart"
+                type="text"
+                placeholder="Escreve a tua mensagem..."
+                autocomplete="off"
+                required
+            >
+
+            <button id="enviarAssistenteSmart" type="submit" aria-label="Enviar mensagem">
+                ➤
+            </button>
+
+        </form>
+
+    </section>
+
+    <script type="module" src="./js/inicio.js"></script>
+    <script type="module" src="./js/assistente-smart.js"></script>
+
+</body>
+</html>

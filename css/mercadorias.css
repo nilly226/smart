@@ -1,0 +1,400 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #eaf4ff, #f7fbff, #dceeff);
+    background-size: 300% 300%;
+    animation: fundoAnimado 12s ease infinite;
+    font-family: "Times New Roman", serif;
+    color: #12304a;
+}
+
+@keyframes fundoAnimado {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.pagina-itens {
+    width: min(1100px, 94%);
+    margin: 0 auto;
+    padding: 25px 0 110px;
+}
+
+.cabecalho-pagina {
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.cabecalho-titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.logo-pagina {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+}
+
+.cabecalho-titulo h1 {
+    margin: 0;
+    color: #0d6efd;
+    font-size: 30px;
+}
+
+.cabecalho-titulo p {
+    margin: 5px 0 0;
+    color: #667788;
+    font-size: 16px;
+}
+
+.form-card,
+.resumo-stock,
+.stock-card,
+.filtros-card,
+.table-card {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #cfe3f7;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.08);
+    margin-bottom: 20px;
+}
+
+.form-card {
+    padding: 22px;
+}
+
+.form-header {
+    border-bottom: 1px solid #dce9f5;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+}
+
+.form-header h2,
+.titulo-secao h2 {
+    margin: 0;
+    color: #084b8a;
+    font-size: 22px;
+}
+
+.form-header p {
+    margin: 6px 0 0;
+    color: #707d89;
+}
+
+#formItem {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    color: #36566f;
+    font-weight: bold;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #bfd5e8;
+    border-radius: 10px;
+    background: #f9fcff;
+    color: #193b55;
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    outline: none;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+#moedaItem {
+    background: #edf5fc;
+    color: #5f7080;
+}
+
+#btnGuardar {
+    grid-column: 1 / -1;
+    width: 52px;
+    height: 44px;
+    justify-self: end;
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+    background: #0d6efd;
+    color: white;
+    font-family: "Times New Roman", serif;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnGuardar:hover {
+    background: #084b8a;
+}
+
+.resumo-stock {
+    padding: 20px;
+}
+
+.titulo-secao {
+    margin-bottom: 15px;
+}
+
+.resumo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.resumo-card {
+    background: #edf6ff;
+    border: 1px solid #c9e0f5;
+    border-top: 5px solid #6ea8fe;
+    border-radius: 13px;
+    padding: 17px;
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resumo-card-principal {
+    background: #dcebff;
+    border-top-color: #0d6efd;
+}
+
+.resumo-card span {
+    color: #5f7181;
+    font-size: 15px;
+}
+
+.resumo-card strong {
+    color: #084b8a;
+    font-size: 21px;
+}
+
+.stock-card {
+    padding: 20px;
+}
+
+.lista-stock {
+    display: grid;
+    gap: 8px;
+}
+
+.stock-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    background: #f1f7fc;
+    border: 1px solid #d3e4f2;
+    border-left: 4px solid #0d6efd;
+    border-radius: 9px;
+}
+
+.stock-item-nome {
+    color: #23465f;
+    font-weight: bold;
+}
+
+.stock-item-quantidade {
+    color: #5f7181;
+    white-space: nowrap;
+}
+
+.stock-vazio {
+    margin: 0;
+    padding: 14px;
+    background: #f5f7f9;
+    border: 1px solid #dfe5ea;
+    border-radius: 9px;
+    color: #6d7881;
+}
+
+.filtros-card {
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+}
+
+.table-card {
+    padding: 20px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.table-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-card thead {
+    background: #0d6efd;
+    color: white;
+}
+
+.table-card th,
+.table-card td {
+    padding: 13px 12px;
+    text-align: left;
+    border-bottom: 1px solid #dce6ee;
+}
+
+.table-card th {
+    font-weight: bold;
+}
+
+.table-card tbody tr {
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.table-card tbody tr:hover {
+    background: #edf6ff;
+}
+
+.table-card td {
+    color: #42596b;
+}
+
+.lista-vazia {
+    display: none;
+    text-align: center;
+    color: #727f89;
+    padding: 20px 0;
+}
+
+.acoes-item {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.acoes-item button {
+    border: 1px solid #b9d2e8;
+    background: #edf6ff;
+    color: #084b8a;
+    padding: 7px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: "Times New Roman", serif;
+}
+
+.acoes-item button:hover {
+    background: #dcebff;
+}
+
+.btn-eliminar {
+    color: #5f6265 !important;
+    background: #f1f3f5 !important;
+    border-color: #d5d9dc !important;
+}
+
+@media (max-width: 800px) {
+    .resumo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #formItem {
+        grid-template-columns: 1fr;
+    }
+
+    #btnGuardar {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .pagina-itens {
+        width: 92%;
+        padding-top: 18px;
+    }
+
+    .cabecalho-titulo {
+        gap: 0;
+    }
+
+    .logo-pagina {
+        width: 48px;
+        height: 48px;
+    }
+
+    .cabecalho-titulo h1 {
+        font-size: 25px;
+    }
+
+    .cabecalho-titulo p {
+        font-size: 14px;
+    }
+
+    .resumo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filtros-card {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card,
+    .resumo-stock,
+    .stock-card,
+    .filtros-card,
+    .table-card {
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    .table-card th,
+    .table-card td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
+
+    #btnGuardar {
+        width: 48px;
+        height: 42px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 420px) {
+    .resumo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stock-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

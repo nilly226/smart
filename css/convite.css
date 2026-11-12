@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f7fb;
+}
+
+.convite-container {
+    width: 100%;
+    max-width: 500px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.10);
+}
+
+.convite-container h1 {
+    margin-bottom: 20px;
+
+    color: #1e3a5f;
+
+    font-size: 26px;
+}
+
+.convite-container p {
+    margin-bottom: 30px;
+
+    color: #555;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+#aceitarConvite {
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: white;
+
+    background: #1e5aa8;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: background 0.3s ease;
+}
+
+#aceitarConvite:hover {
+    background: #16467f;
+}

@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png" />
+
+    <title>Sobre o Smart Luny</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Times New Roman", Times, serif;
+        background: #ffffff;
+        color: #222;
+        line-height: 1.7;
+      }
+
+      .topo {
+        background: #0d6efd;
+        color: white;
+        padding: 16px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        text-decoration: none;
+        white-space: nowrap;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .logo img {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+      }
+
+      .menu-topo {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .menu-topo a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: opacity 0.2s ease;
+      }
+
+      .menu-topo a:hover {
+        opacity: 0.75;
+      }
+
+      .saiba-conteudo {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 60px 30px 90px;
+      }
+
+      .introducao {
+        text-align: center;
+        padding-bottom: 45px;
+        border-bottom: 1px solid #dce6f2;
+      }
+
+      .introducao h1 {
+        font-size: 34px;
+        line-height: 1.2;
+        font-weight: bold;
+        color: #222;
+      }
+
+      .saiba-secao {
+        padding: 48px 0;
+        border-bottom: 1px solid #dce6f2;
+      }
+
+      .saiba-secao:last-child {
+        border-bottom: none;
+      }
+
+      .titulo-secao {
+        margin-bottom: 25px;
+      }
+
+      .titulo-secao h2 {
+        font-size: 27px;
+        line-height: 1.3;
+        color: #222;
+      }
+
+      .titulo-secao .subtitulo {
+        color: #777;
+        font-size: 16px;
+        margin-top: 5px;
+      }
+
+      .saiba-secao > p {
+        font-size: 17px;
+        color: #444;
+        line-height: 1.8;
+        text-align: left;
+        margin-bottom: 18px;
+      }
+
+      .subsecao {
+        margin-top: 30px;
+      }
+
+      .subsecao h3 {
+        font-size: 20px;
+        line-height: 1.4;
+        margin-bottom: 8px;
+        color: #222;
+      }
+
+      .subsecao p {
+        font-size: 17px;
+        color: #444;
+        line-height: 1.8;
+        text-align: left;
+        margin-bottom: 16px;
+      }
+
+      .rodape {
+        background: #0757c9;
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .rodape p {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      @media (max-width: 900px) {
+        .topo {
+          padding: 16px 5%;
+        }
+
+        .saiba-conteudo {
+          max-width: 800px;
+          padding: 55px 30px 80px;
+        }
+
+        .introducao h1 {
+          font-size: 32px;
+        }
+
+        .titulo-secao h2 {
+          font-size: 26px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .topo {
+          flex-direction: column;
+          gap: 12px;
+          padding: 14px 20px;
+        }
+
+        .logo {
+          font-size: 21px;
+        }
+
+        .logo img {
+          width: 34px;
+          height: 34px;
+        }
+
+        .menu-topo {
+          gap: 14px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .menu-topo a {
+          font-size: 14px;
+        }
+
+        .saiba-conteudo {
+          padding: 40px 20px 60px;
+        }
+
+        .introducao {
+          padding-bottom: 35px;
+        }
+
+        .introducao h1 {
+          font-size: 29px;
+        }
+
+        .saiba-secao {
+          padding: 38px 0;
+        }
+
+        .titulo-secao {
+          margin-bottom: 20px;
+        }
+
+        .titulo-secao h2 {
+          font-size: 24px;
+        }
+
+        .titulo-secao .subtitulo {
+          font-size: 15px;
+        }
+
+        .saiba-secao > p,
+        .subsecao p {
+          font-size: 16px;
+          line-height: 1.75;
+        }
+
+        .subsecao {
+          margin-top: 26px;
+        }
+
+        .subsecao h3 {
+          font-size: 19px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topo">
+      <a href="index.html" class="logo">
+        <img src="./assets/imagem logo.png" alt="Logo Smart Luny" />
+        <span>Smart Luny</span>
+      </a>
+
+      <nav class="menu-topo">
+        <a href="index.html#funcionalidades">Funcionalidades</a>
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="saiba-mais.html">Saiba mais</a>
+      </nav>
+    </header>
+
+    <main class="saiba-conteudo">
+
+      <section class="introducao">
+        <h1>Sobre o Smart Luny</h1>
+      </section>
+
+      <section class="saiba-secao">
+        <p>
+          O Smart Luny é um sistema de gestão financeira criado para ajudar
+          qualquer pessoa a organizar as finanças do seu negócio de
+          forma simples, prática e organizada.
+        </p>
+
+        <p>
+          O sistema permite registar e acompanhar informações importantes do
+          negócio, como receitas, despesas, transações financeiras e itens,
+          reunindo essas informações num único lugar.
+        </p>
+
+        <p>
+          O nosso objetivo é tornar a gestão do dia a dia mais simples,
+          reduzindo a dependência de registos manuais e ajudando o utilizador a
+          ter uma visão mais clara das movimentações do seu negócio.
+        </p>
+
+        <p>
+          O Smart Luny foi pensado para quem procura uma
+          solução prática para organizar as suas informações e acompanhar
+          melhor a actividade financeira do seu negócio.
+        </p>
+
+        <p>
+          O sistema encontra-se em constante evolução. Novas funcionalidades
+          e melhorias poderão ser adicionadas progressivamente com base nas
+          necessidades dos utilizadores e na evolução do serviço.
+        </p>
+      </section>
+
+      <section class="saiba-secao">
+        <div class="titulo-secao">
+          <h2>Política de Utilização</h2>
+          <p class="subtitulo">
+            Regras gerais para a utilização responsável do Smart Luny.
+          </p>
+        </div>
+
+        <p>
+          Ao criar uma conta ou utilizar o Smart Luny, o utilizador concorda
+          em utilizar o sistema de forma responsável e de acordo com as
+          presentes regras.
+        </p>
+
+        <div class="subsecao">
+          <h3>Utilização do sistema</h3>
+          <p>
+            O Smart Luny destina-se à organização e gestão das informações
+            relacionadas com negócios e actividades comerciais.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Responsabilidade do utilizador</h3>
+          <p>
+            O utilizador é responsável pelas informações introduzidas na sua
+            conta, incluindo receitas, despesas, itens, valores, descrições e
+            restantes dados registados.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Segurança da conta</h3>
+          <p>
+            O utilizador deve manter os seus dados de acesso protegidos e não
+            deve partilhar a sua palavra-passe ou permitir que terceiros
+            utilizem a sua conta sem autorização.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Utilização proibida</h3>
+          <p>
+            Não é permitido utilizar o Smart Luny para actividades ilegais,
+            tentar obter acesso não autorizado a contas ou dados de outros
+            utilizadores, introduzir informações fraudulentas ou tentar
+            comprometer o funcionamento e a segurança do sistema.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Disponibilidade do serviço</h3>
+          <p>
+            Procuramos manter o Smart Luny disponível e funcional. No entanto,
+            poderão ocorrer interrupções temporárias devido a manutenção,
+            actualizações, problemas técnicos ou outras situações fora do
+            controlo directo do sistema.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Melhorias do sistema</h3>
+          <p>
+            O Smart Luny poderá adicionar, alterar ou remover funcionalidades
+            com o objetivo de melhorar a experiência dos utilizadores e a
+            qualidade do serviço.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Limitação de responsabilidade</h3>
+          <p>
+            O Smart Luny é uma ferramenta de apoio à organização e gestão do
+            negócio. O utilizador continua responsável pela conferência das
+            informações registadas e pelo cumprimento das suas obrigações
+            legais, fiscais e contabilísticas.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Aceitação dos termos</h3>
+          <p>
+            Ao criar uma conta e utilizar o Smart Luny, o utilizador declara
+            que leu, compreendeu e aceitou esta Política de Utilização.
+          </p>
+        </div>
+      </section>
+
+      <section class="saiba-secao">
+        <div class="titulo-secao">
+          <h2>Política de Privacidade</h2>
+          <p class="subtitulo">
+            Informações sobre o tratamento e proteção dos dados dos
+            utilizadores.
+          </p>
+        </div>
+
+        <p>
+          A privacidade dos utilizadores é importante para o Smart Luny. Esta
+          política explica, de forma geral, como os dados fornecidos pelo
+          utilizador podem ser utilizados no funcionamento do sistema.
+        </p>
+
+        <div class="subsecao">
+          <h3>Dados que podem ser recolhidos</h3>
+
+          <p>
+            Dependendo das funcionalidades utilizadas, poderão ser recolhidos
+            dados necessários para criar e gerir a conta, autenticar o
+            utilizador e disponibilizar os serviços do sistema.
+          </p>
+
+          <p>
+            Também poderão ser armazenadas informações introduzidas
+            voluntariamente pelo utilizador relacionadas com o seu negócio,
+            como receitas, despesas, itens e outros registos de gestão.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Utilização dos dados</h3>
+
+          <p>
+            Os dados poderão ser utilizados para permitir o funcionamento do
+            Smart Luny, disponibilizar as funcionalidades da conta, melhorar
+            a experiência do utilizador e manter a segurança do sistema.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Proteção dos dados</h3>
+
+          <p>
+            O Smart Luny procura adoptar medidas técnicas e organizacionais
+            adequadas para proteger os dados dos utilizadores contra acesso não
+            autorizado, alteração, divulgação ou utilização indevida.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Dados do negócio</h3>
+
+          <p>
+            As informações financeiras e comerciais introduzidas pelo utilizador
+            são utilizadas para fornecer as funcionalidades de gestão
+            disponibilizadas pelo sistema.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Partilha de informações</h3>
+
+          <p>
+            O Smart Luny não pretende vender os dados pessoais dos
+            utilizadores. Alguns dados poderão ser processados por serviços
+            tecnológicos necessários ao funcionamento do sistema, de acordo
+            com as respectivas configurações e políticas aplicáveis.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Segurança da informação</h3>
+
+          <p>
+            Apesar das medidas de segurança adoptadas, nenhum serviço digital
+            pode garantir segurança absoluta. O utilizador também deve
+            contribuir para a proteção da sua conta, mantendo os seus dados de
+            acesso confidenciais.
+          </p>
+        </div>
+      </section>
+
+      <section class="saiba-secao">
+        <div class="titulo-secao">
+          <h2>Política de Cookies</h2>
+          <p class="subtitulo">
+            Como os cookies podem contribuir para o funcionamento do
+            sistema.
+          </p>
+        </div>
+
+        <p>
+          O Smart Luny poderá utilizar cookies e tecnologias semelhantes para
+          permitir o funcionamento adequado do sistema, melhorar a
+          experiência do utilizador e compreender como o serviço é utilizado.
+        </p>
+
+        <div class="subsecao">
+          <h3>O que são cookies?</h3>
+
+          <p>
+            Cookies são pequenos ficheiros ou informações armazenadas no
+            dispositivo do utilizador quando este visita determinados websites.
+            Podem ajudar a manter sessões, guardar preferências e melhorar o
+            funcionamento do serviço.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Cookies necessários</h3>
+
+          <p>
+            Alguns cookies ou tecnologias semelhantes podem ser necessários
+            para funcionalidades essenciais, como autenticação, segurança e
+            manutenção da sessão do utilizador.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Cookies de preferência</h3>
+
+          <p>
+            Poderão ser utilizados mecanismos semelhantes para guardar
+            determinadas preferências do utilizador e proporcionar uma
+            experiência mais adequada.
+          </p>
+        </div>
+
+        <div class="subsecao">
+          <h3>Gestão de cookies</h3>
+
+          <p>
+            O utilizador pode controlar ou eliminar cookies através das
+            configurações do seu navegador. A desativação de determinados
+            cookies poderá afectar algumas funcionalidades do serviço.
+          </p>
+        </div>
+      </section>
+
+      <section class="saiba-secao">
+        <div class="titulo-secao">
+          <h2>Actualização destas informações</h2>
+        </div>
+
+        <p>
+          O Smart Luny poderá actualizar estas informações sempre que
+          necessário, especialmente quando forem adicionadas novas
+          funcionalidades ou ocorrerem alterações no funcionamento do
+          sistema.
+        </p>
+
+        <p>
+          Recomendamos que os utilizadores consultem esta página periodicamente
+          para conhecer eventuais alterações.
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="rodape">
+      <p>Smart Luny © v1.0 2026</p>
+    </footer>
+
+    <script src="./js/script.js"></script>
+
+    <script type="module" src="./js/visitas.js"></script>
+  </body>
+</html>

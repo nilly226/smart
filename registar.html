@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/registar.css" />
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png" />
+
+    <title>Criar Conta - Smart Luny</title>
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h1>Smart Luny</h1>
+      <p>Criar nova conta</p>
+
+      <form id="register-form" onsubmit="return criarConta(event)">
+
+        <input
+          type="text"
+          id="nome"
+          placeholder="Nome"
+          autocomplete="name"
+          required
+        />
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          autocomplete="email"
+          required
+        />
+
+        <input
+          type="tel"
+          id="telefone"
+          placeholder="Número de telefone (opcional)"
+          autocomplete="tel"
+        />
+
+        <input
+          type="password"
+          id="senha"
+          placeholder="Senha"
+          autocomplete="new-password"
+          required
+        />
+
+        <input
+          type="password"
+          id="confirmarSenha"
+          placeholder="Confirmar senha"
+          autocomplete="new-password"
+          required
+        />
+
+        <label class="politica-checkbox">
+          <input
+            type="checkbox"
+            id="aceitarPolitica"
+          />
+
+          <span>
+            Li, compreendi e aceito a
+            <a href="saiba-mais.html#politica-utilizacao" target="_blank">
+              Política de Utilização do Smart Luny
+            </a>.
+          </span>
+        </label>
+
+        <button
+          id="btn-criar-conta"
+          type="submit"
+          disabled
+        >
+          Criar Conta
+        </button>
+
+      </form>
+
+      <button
+        id="google-login"
+        class="google-btn"
+        type="button"
+      >
+        <img
+          src="https://www.google.com/favicon.ico"
+          width="18"
+          alt="Google"
+        />
+
+        <span>Registar com Google</span>
+      </button>
+
+      <p>
+        Já tens conta?
+        <a href="login.html">Entrar</a>
+      </p>
+    </div>
+
+    <script type="module" src="./js/registar.js"></script>
+
+    <script type="module" src="./js/visitas.js"></script>
+  </body>
+</html>

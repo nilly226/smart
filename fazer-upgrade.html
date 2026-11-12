@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fazer Upgrade</title>
+
+    <link rel="stylesheet" href="./css/fazer-upgrade.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+</head>
+
+<body>
+    <main class="pagina-upgrade">
+
+        <button
+            type="button"
+            class="btn-fechar"
+            onclick="window.location.href='index.html'"
+            aria-label="Fechar"
+        >
+            &times;
+        </button>
+
+        <header class="cabecalho-pagina">
+            <div class="cabecalho-titulo">
+                <h1>Fazer Upgrade</h1>
+                <p>
+                    Escolha o plano que melhor acompanha as necessidades do seu negócio.
+                </p>
+            </div>
+        </header>
+
+        <section class="planos">
+
+            <article class="plano gratis">
+                <div class="titulo-plano">
+                    <h2>Plano Grátis</h2>
+                    <span class="etiqueta">Gratuito</span>
+                </div>
+
+                <p class="descricao">
+                    Organize o seu negócio com as principais ferramentas de gestão.
+                </p>
+
+                <ul>
+                    <li>Receitas e despesas</li>
+                    <li>Até 30 transacções por dia</li>
+                    <li>Até 150 itens</li>
+                    <li>Stock opcional</li>
+                    <li>Até 25 dívidas activas</li>
+                    <li>Pagamentos parciais e totais</li>
+                    <li>Histórico</li>
+                    <li>Análise financeira</li>
+                    <li>Comparação dos movimentos</li>
+                    <li>Gráfico financeiro</li>
+                    <li>Sugestões</li>
+                    <li>Configurações</li>
+                </ul>
+
+                <p class="limites">
+                    Os limites aplicam-se à criação de novos registos. Os dados existentes são preservados.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn-plano-atual"
+                    id="botao-plano-gratis"
+                    disabled
+                >
+                    Plano actual
+                </button>
+            </article>
+
+            <article class="plano sigma">
+                <div class="titulo-plano">
+                    <h2>Plano Sigma</h2>
+                    <span class="etiqueta destaque">Semanal</span>
+                </div>
+
+                <p class="descricao">
+                    Tenha mais capacidade de utilização durante uma semana.
+                </p>
+
+                <ul>
+                    <li>Mais registos de receitas e despesas</li>
+                    <li>Mais itens</li>
+                    <li>Mais dívidas activas</li>
+                    <li>Pagamentos parciais e totais</li>
+                    <li>Maior capacidade de utilização do histórico</li>
+                    <li>Dados preservados após a expiração</li>
+                    <li>Regresso ao plano grátis após os 7 dias, se não houver renovação</li>
+                </ul>
+
+                <div class="preco">
+                    <strong>US$ 4,37</strong>
+                    <span>por 7 dias</span>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-upgrade"
+                    data-plano="sigma"
+                >
+                    Pagar com PayPal
+                </button>
+            </article>
+
+            <article class="plano omega">
+                <div class="titulo-plano">
+                    <h2>Plano Ómega</h2>
+                    <span class="etiqueta destaque">Acesso completo</span>
+                </div>
+
+                <p class="descricao">
+                    Utilize as ferramentas de gestão com maior liberdade.
+                </p>
+
+                <ul>
+                    <li>Receitas e despesas sem o limite do plano grátis</li>
+                    <li>Itens sem o limite do plano grátis</li>
+                    <li>Dívidas activas sem o limite do plano grátis</li>
+                    <li>Pagamentos parciais e totais</li>
+                    <li>Histórico sem os limites dos planos inferiores</li>
+                    <li>Análise financeira sem os limites dos planos inferiores</li>
+                    <li>Comparação dos movimentos</li>
+                    <li>Gráficos financeiros</li>
+                    <li>Sugestões</li>
+                    <li>Configurações</li>
+                    <li>Dados preservados após a expiração</li>
+                    <li>Regresso ao plano grátis após os 30 dias, se não houver renovação</li>
+                </ul>
+
+                <div class="preco">
+                    <strong>US$ 6,31</strong>
+                    <span>por 30 dias</span>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-upgrade"
+                    data-plano="omega"
+                >
+                    Pagar com PayPal
+                </button>
+            </article>
+
+        </section>
+
+        <p
+            id="mensagem-upgrade"
+            class="mensagem-upgrade"
+            aria-live="polite"
+            role="status"
+        ></p>
+
+    </main>
+
+    <script type="module" src="./js/fazer-upgrade.js"></script>
+</body>
+</html>

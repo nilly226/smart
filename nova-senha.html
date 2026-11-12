@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Nova senha - Smart Luny</title>
+
+    <link rel="stylesheet" href="css/login.css" />
+
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png" />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h1>Nova senha</h1>
+
+      <p>Defina uma nova senha para a sua conta.</p>
+
+      <input
+        type="password"
+        id="novaSenha"
+        placeholder="Nova senha"
+        autocomplete="new-password"
+      />
+
+      <input
+        type="password"
+        id="confirmarSenha"
+        placeholder="Confirmar nova senha"
+        autocomplete="new-password"
+      />
+
+      <button id="guardarSenha" type="button">Guardar nova senha</button>
+
+      <p id="mensagem"></p>
+
+      <p>
+        <a href="login.html"> Voltar ao login </a>
+      </p>
+    </div>
+
+    <script type="module" src="./js/nova-senha.js"></script>
+
+    <script type="module" src="./js/visitas.js"></script>
+  </body>
+</html>

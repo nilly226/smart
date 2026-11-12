@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar senha - Smart Luny</title>
+
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png" />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h1>Recuperar senha</h1>
+
+      <p>
+        Introduza o seu e-mail para receber um link de recuperação da senha.
+      </p>
+
+      <input type="email" id="email" placeholder="Email" autocomplete="email" />
+
+      <button id="enviarLink" type="button">Enviar link de recuperação</button>
+
+      <p id="mensagem"></p>
+
+      <p>
+        <a href="login.html">Voltar ao login</a>
+      </p>
+    </div>
+
+    <script type="module" src="./js/recuperar-senha.js"></script>
+
+    <script type="module" src="./js/visitas.js"></script>
+  </body>
+</html>

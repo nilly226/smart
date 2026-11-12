@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    120deg,
+    #eef7ff,
+    #d8ecff,
+    #f4f9ff,
+    #cfe7ff,
+    #e8f4ff,
+    #d7ebff
+  );
+
+  background-size: 400% 400%;
+
+  animation: fundoAzul 18s ease infinite;
+
+  font-family: "Times New Roman", Times, serif;
+  color: #1f2937;
+}
+
+@keyframes fundoAzul {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 100%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 0%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.atividade-container {
+  width: 90%;
+  max-width: 600px;
+
+  background: #ffffff;
+
+  padding: 55px 50px;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+}
+
+.atividade-container > p {
+  color: #64748b;
+
+  font-size: 22px;
+
+  line-height: 1.5;
+
+  margin-bottom: 32px;
+}
+
+#atividade-form {
+  display: flex;
+
+  flex-direction: column;
+
+  text-align: left;
+}
+
+#atividadeNegocio {
+  width: 100%;
+
+  padding: 16px 17px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 8px;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 18px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#atividadeNegocio:focus {
+  border-color: #1565c0;
+
+  box-shadow:
+    0 0 0 3px rgba(21, 101, 192, 0.12);
+}
+
+#atividade-form button {
+  width: 52px;
+  height: 52px;
+
+  align-self: flex-end;
+
+  margin-top: 20px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #1565c0;
+
+  color: #ffffff;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+#atividade-form button:hover {
+  background: #0d47a1;
+
+  transform: translateX(3px);
+}
+
+#atividade-form button:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 500px) {
+
+  .atividade-container {
+    width: 92%;
+
+    padding: 38px 25px;
+  }
+
+  .atividade-container > p {
+    font-size: 18px;
+  }
+
+  #atividadeNegocio {
+    font-size: 16px;
+  }
+}

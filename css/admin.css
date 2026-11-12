@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    color: #17365d;
+    background: linear-gradient(
+        120deg,
+        #eef7ff,
+        #d8ecff,
+        #f7fbff,
+        #dceeff,
+        #f2f8ff,
+        #d9ecff
+    );
+    background-size: 400% 400%;
+    animation: fundoAzul 18s ease infinite;
+}
+
+@keyframes fundoAzul {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.content {
+    width: 100%;
+    padding: 30px 30px 105px;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.logo-topo {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+}
+
+.cabecalho-texto h2 {
+    margin: 0;
+    font-size: 29px;
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+.cabecalho-texto p {
+    margin-top: 6px;
+    font-size: 16px;
+    color: #52708f;
+}
+
+.admin-section {
+    width: 100%;
+    margin-bottom: 36px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    font-size: 22px;
+    color: #17365d;
+}
+
+.estado-carregamento {
+    font-size: 14px;
+    color: #52708f;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.admin-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid #d7e6f5;
+    border-radius: 16px;
+    padding: 23px;
+    min-height: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 5px 18px rgba(23, 54, 93, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(23, 54, 93, 0.10);
+}
+
+.admin-card span {
+    font-size: 15px;
+    color: #52708f;
+    margin-bottom: 10px;
+}
+
+.admin-card strong {
+    font-size: 32px;
+    color: #0d6efd;
+    font-weight: bold;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #d7e6f5;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(23, 54, 93, 0.07);
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 760px;
+}
+
+.table-container th {
+    background: #edf6ff;
+    color: #17365d;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    padding: 16px;
+    border-bottom: 2px solid #cfe2f5;
+}
+
+.table-container td {
+    padding: 16px;
+    font-size: 14px;
+    color: #365979;
+    border-bottom: 1px solid #e5eef7;
+}
+
+.table-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-container tbody tr:hover {
+    background: #f6faff;
+}
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 68px;
+    background: rgba(255, 255, 255, 0.97);
+    border-top: 1px solid #d7e6f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    z-index: 1000;
+    box-shadow: 0 -3px 14px rgba(23, 54, 93, 0.05);
+}
+
+.bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 70px;
+    color: #52708f;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.bottom-nav a:hover {
+    color: #0d6efd;
+}
+
+.bottom-nav a svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.bottom-nav a span {
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.bottom-nav a.ativo {
+    color: #0d6efd;
+}
+
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content {
+        padding: 25px 20px 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 20px 15px 95px;
+    }
+
+    .page-header {
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    .logo-topo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cabecalho-texto h2 {
+        font-size: 23px;
+    }
+
+    .cabecalho-texto p {
+        font-size: 14px;
+    }
+
+    .section-header h2 {
+        font-size: 19px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .admin-card {
+        min-height: 105px;
+        padding: 19px;
+    }
+
+    .admin-card span {
+        font-size: 14px;
+    }
+
+    .admin-card strong {
+        font-size: 29px;
+    }
+
+    .table-container th {
+        font-size: 14px;
+        padding: 14px;
+    }
+
+    .table-container td {
+        font-size: 13px;
+        padding: 14px;
+    }
+
+    .bottom-nav {
+        gap: 8px;
+    }
+
+    .bottom-nav a {
+        min-width: 58px;
+    }
+
+    .bottom-nav a svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .bottom-nav a span {
+        font-size: 10px;
+    }
+}

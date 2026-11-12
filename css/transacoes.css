@@ -1,0 +1,760 @@
+body {
+    background: #eef6ff;
+}
+
+.pagina {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 30px 30px 110px;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(
+        120deg,
+        #eef7ff,
+        #d8ecff,
+        #f4f9ff,
+        #cfe7ff,
+        #e8f4ff,
+        #d7ebff
+    );
+    background-size: 400% 400%;
+    animation: fundoAzul 18s ease infinite;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.logo-topo {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.cabecalho-texto {
+    flex: 0 1 auto;
+}
+
+.cabecalho h2 {
+    color: #0d6efd;
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.cabecalho p {
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+    font-size: 16px;
+}
+
+.pagina > .card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    padding: 28px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.card-adicionar {
+    border-top: 4px solid #0d6efd;
+}
+
+.card-dividas {
+    border-top: 4px solid #0d6efd;
+}
+
+.titulo-card {
+    margin-bottom: 22px;
+}
+
+.pagina > .card h3 {
+    color: #222;
+    margin: 0 0 7px;
+    font-size: 20px;
+}
+
+.pagina > .card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+#formTransacao {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 18px;
+}
+
+.campo {
+    width: 100%;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 7px;
+    color: #333;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.campo select,
+.campo input {
+    width: 100%;
+    height: 46px;
+    padding: 11px 13px;
+    border: 1px solid #ccd3dc;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    background: #ffffff;
+    color: #222;
+    box-sizing: border-box;
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+.campo select:focus,
+.campo input:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.08);
+    background: #ffffff;
+}
+
+.campo-descricao {
+    grid-column: 1 / -1;
+}
+
+.campo-acoes {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2px;
+}
+
+#btnGuardar {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0 0 0 auto;
+    border: none;
+    border-radius: 50%;
+    background: #0d6efd;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+#btnGuardar:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+#btnGuardar:active {
+    transform: translateY(0);
+}
+
+.dividas-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.divida-resumo-item {
+    background: #f7faff;
+    border: 1px solid #dce9f8;
+    border-radius: 9px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.divida-resumo-item span {
+    color: #666;
+    font-size: 14px;
+}
+
+.divida-resumo-item strong {
+    color: #17365d;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.dividas-acoes {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+#btnAdicionarDivida {
+    border: none;
+    border-radius: 7px;
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 11px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+#btnAdicionarDivida:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+#btnAdicionarDivida:active {
+    transform: translateY(0);
+}
+
+.dividas-lista {
+    width: 100%;
+}
+
+.formulario-divida {
+    width: 100%;
+    background: #f8fbff;
+    border: 1px solid #dce9f8;
+    border-left: 4px solid #0d6efd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.formulario-divida-cabecalho {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.formulario-divida-cabecalho h4 {
+    color: #17365d;
+    margin: 0 0 5px;
+    font-size: 19px;
+}
+
+.formulario-divida-cabecalho p {
+    color: #666;
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#fecharFormularioDivida,
+#fecharFormularioPagamento {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    border: 1px solid #d5e2f0;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #17365d;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+#fecharFormularioDivida:hover,
+#fecharFormularioPagamento:hover {
+    background: #0d6efd;
+    color: #ffffff;
+}
+
+.formulario-divida-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.campo-divida {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.campo-divida label {
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.campo-divida input,
+.campo-divida select,
+.campo-divida textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #ccd3dc;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #222;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.campo-divida input:focus,
+.campo-divida select:focus,
+.campo-divida textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.08);
+}
+
+.campo-divida textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.acoes-formulario-divida {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+#cancelarDivida,
+#cancelarPagamentoDivida {
+    border: 1px solid #ccd3dc;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #17365d;
+    padding: 10px 17px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#cancelarDivida:hover,
+#cancelarPagamentoDivida:hover {
+    background: #f3f7fc;
+}
+
+#guardarDivida,
+#guardarPagamentoDivida {
+    border: none;
+    border-radius: 7px;
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease;
+}
+
+#guardarDivida:hover,
+#guardarPagamentoDivida:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.pagamento-em-falta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: #f7faff;
+    border: 1px solid #dce9f8;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+}
+
+.pagamento-em-falta span {
+    color: #666;
+    font-size: 13px;
+}
+
+.pagamento-em-falta strong {
+    color: #0d6efd;
+    font-size: 18px;
+}
+
+.divida-item {
+    background: #ffffff;
+    border: 1px solid #dce9f8;
+    border-radius: 9px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+.divida-item-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.divida-item-topo strong {
+    color: #17365d;
+    font-size: 16px;
+}
+
+.divida-estado {
+    padding: 5px 9px;
+    border-radius: 20px;
+    background: #eef7ff;
+    color: #0d6efd;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.divida-tipo {
+    margin-top: 6px;
+    color: #666;
+    font-size: 13px;
+}
+
+.divida-valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.divida-valores > div {
+    background: #f7faff;
+    border: 1px solid #e5eef8;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.divida-valores span {
+    display: block;
+    color: #6c757d;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.divida-valores strong {
+    color: #17365d;
+    font-size: 14px;
+}
+
+.divida-detalhes {
+    margin-top: 12px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.divida-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.btn-registar-pagamento,
+.btn-editar-divida,
+.btn-eliminar-divida {
+    border-radius: 7px;
+    padding: 9px 14px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.btn-registar-pagamento {
+    border: 1px solid #0d6efd;
+    background: #ffffff;
+    color: #0d6efd;
+}
+
+.btn-registar-pagamento:hover {
+    background: #0d6efd;
+    color: #ffffff;
+}
+
+.btn-editar-divida {
+    border: 1px solid #0d6efd;
+    background: #ffffff;
+    color: #0d6efd;
+}
+
+.btn-editar-divida:hover {
+    background: #0d6efd;
+    color: #ffffff;
+}
+
+.btn-eliminar-divida {
+    border: 1px solid #dc3545;
+    background: #ffffff;
+    color: #dc3545;
+}
+
+.btn-eliminar-divida:hover {
+    background: #dc3545;
+    color: #ffffff;
+}
+
+.card-lista {
+    overflow: hidden;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.pagina table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+.pagina th {
+    background: #0d6efd;
+    color: #ffffff;
+    padding: 13px 14px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pagina td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #e3e7ec;
+    color: #333;
+    font-size: 14px;
+    background: #ffffff;
+}
+
+.pagina tbody tr {
+    transition: background 0.15s ease;
+}
+
+.pagina tbody tr:hover td {
+    background: #f7faff;
+}
+
+.pagina tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pagina td:nth-child(1),
+.pagina td:nth-child(4),
+.pagina td:nth-child(5) {
+    white-space: nowrap;
+}
+
+.bottom-nav {
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.bottom-nav a {
+    box-sizing: border-box;
+}
+
+@keyframes fundoAzul {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .pagina {
+        max-width: 100%;
+        padding: 20px 14px 100px;
+    }
+
+    .cabecalho {
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+
+    .logo-topo {
+        width: 54px;
+        height: 54px;
+    }
+
+    .cabecalho-texto {
+        flex: 0 1 auto;
+    }
+
+    .cabecalho h2 {
+        font-size: 25px;
+    }
+
+    .cabecalho p {
+        font-size: 15px;
+    }
+
+    .pagina > .card {
+        padding: 20px 18px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .pagina > .card h3 {
+        font-size: 18px;
+    }
+
+    #formTransacao {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .campo-descricao {
+        grid-column: auto;
+    }
+
+    .campo-acoes {
+        grid-column: auto;
+        margin-top: 2px;
+    }
+
+    #btnGuardar {
+        width: 48px;
+        height: 48px;
+        font-size: 25px;
+    }
+
+    .dividas-resumo {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .divida-resumo-item {
+        padding: 14px;
+    }
+
+    .dividas-acoes {
+        justify-content: stretch;
+    }
+
+    #btnAdicionarDivida {
+        width: 100%;
+    }
+
+    .formulario-divida {
+        padding: 16px;
+    }
+
+    .formulario-divida-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .acoes-formulario-divida {
+        flex-direction: column;
+    }
+
+    #cancelarDivida,
+    #guardarDivida,
+    #cancelarPagamentoDivida,
+    #guardarPagamentoDivida {
+        width: 100%;
+    }
+
+    .divida-valores {
+        grid-template-columns: 1fr;
+    }
+
+    .divida-item-topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .divida-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-registar-pagamento,
+    .btn-editar-divida,
+    .btn-eliminar-divida {
+        width: 100%;
+    }
+
+    .pagina table {
+        min-width: 650px;
+    }
+
+    .pagina th,
+    .pagina td {
+        padding: 11px 10px;
+        font-size: 13px;
+    }
+}

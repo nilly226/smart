@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,100..900&family=Ramaraja&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png" />
+
+    <title>Smart Luny - Gestão Financeira para o seu negócio</title>
+
+    <style>
+      body {
+        visibility: hidden;
+      }
+
+      .botao-assistente-smart {
+          position: fixed;
+          right: 22px;
+          bottom: 22px;
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          gap: 9px;
+          padding: 13px 19px;
+          border: none;
+          border-radius: 30px;
+          background: #0d6efd;
+          color: #fff;
+          font-size: 15px;
+          font-family: 'Segoe UI', system-ui, sans-serif;
+          font-weight: 600;
+          box-shadow: 0 4px 16px rgba(13, 110, 253, 0.3);
+          cursor: pointer;
+          transition: background 0.2s ease;
+      }
+
+      .botao-assistente-smart span:first-child {
+          font-size: 23px;
+          line-height: 1;
+      }
+
+      .botao-assistente-smart:hover {
+          background: #0b5ed7;
+      }
+
+      .janela-assistente-smart {
+          position: fixed;
+          right: 22px;
+          bottom: 80px;
+          z-index: 10000;
+          display: none;
+          flex-direction: column;
+          width: 360px;
+          max-width: calc(100vw - 28px);
+          height: 500px;
+          max-height: calc(100dvh - 100px);
+          background: #fff;
+          border: 1px solid #d8e8fb;
+          border-radius: 16px;
+          box-shadow: 0 8px 35px rgba(20, 70, 130, 0.2);
+          overflow: hidden;
+          font-family: 'Segoe UI', system-ui, sans-serif;
+      }
+
+      .janela-assistente-smart.aberta {
+          display: flex;
+      }
+
+      .janela-assistente-smart.minimizada {
+          display: flex;
+          height: auto;
+          max-height: none;
+          width: 300px;
+          max-width: calc(100vw - 28px);
+      }
+
+      .janela-assistente-smart.minimizada .mensagens-assistente-smart,
+      .janela-assistente-smart.minimizada .formulario-assistente-smart {
+          display: none;
+      }
+
+      .janela-assistente-smart.minimizada .cabecalho-assistente-smart {
+          border-radius: 16px;
+      }
+
+      .cabecalho-assistente-smart {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 14px 16px;
+          background: #0d6efd;
+          color: #fff;
+      }
+
+      .identidade-assistente-smart {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+      }
+
+      .icone-assistente-smart {
+          width: 38px;
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          font-size: 25px;
+      }
+
+      .identidade-assistente-smart strong,
+      .identidade-assistente-smart span {
+          display: block;
+      }
+
+      .identidade-assistente-smart strong {
+          font-size: 15px;
+      }
+
+      .identidade-assistente-smart span {
+          margin-top: 3px;
+          font-size: 12px;
+          opacity: 0.9;
+      }
+
+      .acoes-assistente-smart {
+          display: flex;
+          gap: 7px;
+      }
+
+      .acoes-assistente-smart button {
+          width: 30px;
+          height: 30px;
+          border: none;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.18);
+          color: #fff;
+          font-size: 21px;
+          cursor: pointer;
+      }
+
+      .mensagens-assistente-smart {
+          flex: 1;
+          min-height: 0;
+          padding: 15px;
+          overflow-y: auto;
+          background: #f5f9ff;
+      }
+
+      .mensagem-assistente-smart {
+          display: flex;
+          margin-bottom: 12px;
+      }
+
+      .mensagem-assistente-smart.assistente {
+          justify-content: flex-start;
+      }
+
+      .mensagem-assistente-smart.utilizador {
+          justify-content: flex-end;
+      }
+
+      .balao-assistente-smart {
+          max-width: 85%;
+          padding: 11px 13px;
+          border-radius: 13px;
+          background: #fff;
+          color: #333;
+          font-size: 14px;
+          line-height: 1.5;
+          overflow-wrap: anywhere;
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .mensagem-assistente-smart.utilizador .balao-assistente-smart {
+          background: #0d6efd;
+          color: #fff;
+          border-bottom-right-radius: 4px;
+      }
+
+      .mensagem-assistente-smart.assistente .balao-assistente-smart {
+          border-bottom-left-radius: 4px;
+      }
+
+      .balao-assistente-smart p {
+          margin: 0 0 8px;
+      }
+
+      .balao-assistente-smart p:last-child {
+          margin-bottom: 0;
+      }
+
+      .balao-assistente-smart ul,
+      .balao-assistente-smart ol {
+          padding-left: 21px;
+          margin: 7px 0;
+      }
+
+      .balao-assistente-smart li {
+          margin-bottom: 4px;
+      }
+
+      .formulario-assistente-smart {
+          display: flex;
+          gap: 9px;
+          padding: 12px;
+          border-top: 1px solid #e1ebf7;
+          background: #fff;
+      }
+
+      .formulario-assistente-smart input {
+          flex: 1;
+          min-width: 0;
+          padding: 11px 13px;
+          border: 1px solid #d5e3f3;
+          border-radius: 22px;
+          outline: none;
+          font-size: 14px;
+          font-family: inherit;
+      }
+
+      .formulario-assistente-smart input:focus {
+          border-color: #0d6efd;
+      }
+
+      .formulario-assistente-smart button {
+          width: 42px;
+          height: 42px;
+          flex-shrink: 0;
+          border: none;
+          border-radius: 50%;
+          background: #0d6efd;
+          color: #fff;
+          font-size: 19px;
+          cursor: pointer;
+      }
+
+      .botao-fale-connosco {
+          display: block;
+          margin-top: 10px;
+          padding: 9px 14px;
+          border: none;
+          border-radius: 20px;
+          background: #0d6efd;
+          color: #fff;
+          font-weight: 600;
+          cursor: pointer;
+      }
+
+      .area-botao-voltar-assistente {
+          display: flex;
+          justify-content: center;
+          margin: 12px 0;
+      }
+
+      .area-botao-voltar-assistente button, .area-botao-voltar-assistente a {
+          padding: 9px 14px;
+          border: 1px solid #0d6efd;
+          border-radius: 20px;
+          background: #fff;
+          color: #0d6efd;
+          font-weight: 600;
+          cursor: pointer;
+          text-decoration: none;
+          font-size: 13px;
+      }
+
+      .balao-indicador {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          min-width: 52px;
+          padding: 14px;
+      }
+
+      .ponto-resposta {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #0d6efd;
+          animation: animarPonto 1.2s infinite ease-in-out;
+      }
+
+      .ponto-resposta:nth-child(2) {
+          animation-delay: 0.2s;
+      }
+
+      .ponto-resposta:nth-child(3) {
+          animation-delay: 0.4s;
+      }
+
+      @keyframes animarPonto {
+          0%, 60%, 100% {
+              opacity: 0.35;
+              transform: translateY(0);
+          }
+          30% {
+              opacity: 1;
+              transform: translateY(-4px);
+          }
+      }
+
+      @media (max-width: 700px) {
+          .botao-assistente-smart {
+              right: 14px;
+              bottom: 14px;
+              padding: 11px 15px;
+              font-size: 14px;
+          }
+
+          .janela-assistente-smart {
+              right: 10px;
+              bottom: 75px;
+              width: calc(100vw - 20px);
+              max-width: none;
+              height: min(500px, calc(100dvh - 90px));
+              max-height: calc(100dvh - 90px);
+          }
+
+          .janela-assistente-smart.minimizada {
+              width: calc(100vw - 20px);
+              right: 10px;
+          }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="bloqueioSeguranca" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #eef6ff; z-index: 99999; display: flex; align-items: center; justify-content: center; font-family: 'Segoe UI', sans-serif;">
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 35px rgba(20, 70, 130, 0.2); text-align: center; max-width: 400px; width: 90%;">
+            <img src="./assets/imagem logo.png" alt="Smart Luny" style="width: 80px; margin-bottom: 20px;">
+            <h1 style="color: #17365d; margin-top: 0; font-size: 24px;">Acesso Restrito</h1>
+            <p style="color: #666; margin-bottom: 20px;">Este site está em fase de testes privados. Insira a palavra-passe:</p>
+            <input type="password" id="senhaAcesso" placeholder="Palavra-passe" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #d5e3f3; border-radius: 8px; box-sizing: border-box; font-size: 16px;">
+            <button onclick="verificarSenha()" style="width: 100%; padding: 12px; background: #0d6efd; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">Entrar</button>
+            <div id="erroSenha" style="color: #dc2626; font-size: 14px; margin-top: 10px; display: none;">Palavra-passe incorreta.</div>
+        </div>
+    </div>
+
+    <header class="topo">
+      <div class="logo">
+        <img src="./assets/imagem logo.png" alt="Logo Smart Luny" />
+        <span>Smart Luny</span>
+      </div>
+
+      <nav class="menu-topo">
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="saiba-mais.html">Saiba mais</a>
+        <a href="fazer-upgrade.html">Fazer Upgrade</a>
+        <a href="login.html">Entrar</a>
+        <a href="registar.html" class="btn-menu">Criar Conta</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-texto">
+          <span class="hero-tag">Gestão simples para o seu negócio</span>
+
+          <h2>
+            Controle as finanças do seu negócio de forma simples e organizada.
+          </h2>
+
+          <p>
+            Tenha uma visão mais clara das suas receitas, despesas e
+            movimentações financeiras. Mantenha tudo organizado e acompanhe o
+            seu negócio de forma prática no dia a dia.
+          </p>
+
+          <div class="hero-botoes">
+            <a href="registar.html" class="btn-primary">
+              Criar conta gratuitamente
+            </a>
+
+            <a href="login.html" class="btn-secondary">Entrar</a>
+          </div>
+        </div>
+
+        <div class="hero-imagem">
+          <img src="./assets/painel.png" alt="Painel do Smart Luny" />
+        </div>
+      </section>
+
+      <section class="funcionalidades" id="funcionalidades">
+        <div class="secao-titulo">
+          <span>Funcionalidades</span>
+          <h2>Tudo o que precisa para organizar o seu negócio</h2>
+          <p>
+            Tenha as principais informações do seu negócio organizadas num único
+            lugar.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 16V8"></path>
+                <path d="M9 11l3-3 3 3"></path>
+              </svg>
+            </div>
+            <h3>Registo de receitas</h3>
+            <p>
+              Registe todas as entradas de dinheiro do seu negócio de forma
+              simples e organizada.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M12 8v8"></path>
+                <path d="M9 13l3 3 3-3"></path>
+              </svg>
+            </div>
+            <h3>Controlo de despesas</h3>
+            <p>
+              Registe os gastos do negócio e acompanhe os custos da sua
+              actividade.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 7h16v13H4z"></path>
+                <path d="M4 7l3-4h10l3 4"></path>
+                <path d="M9 11h6"></path>
+              </svg>
+            </div>
+            <h3>Registo e organização</h3>
+            <p>
+              Registe e organize as informações do que faz parte do seu negócio,
+              acompanhe quantidades e mantenha tudo num só lugar.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 19V5"></path>
+                <path d="M4 19h16"></path>
+                <path d="M7 15l4-4 3 2 5-6"></path>
+                <path d="M16 7h3v3"></path>
+              </svg>
+            </div>
+            <h3>Movimentações financeiras</h3>
+            <p>
+              Acompanhe receitas, despesas e outras movimentações financeiras do
+              negócio.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 3h9l4 4v14H6z"></path>
+                <path d="M15 3v5h4"></path>
+                <path d="M9 12h6"></path>
+                <path d="M9 16h6"></path>
+              </svg>
+            </div>
+            <h3>Histórico organizado</h3>
+            <p>
+              Consulte os registos anteriores e acompanhe o histórico da
+              actividade.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="7" y="2" width="10" height="20" rx="2"></rect>
+                <path d="M10 5h4"></path>
+                <circle cx="12" cy="19" r="1"></circle>
+              </svg>
+            </div>
+            <h3>Gestão no telemóvel</h3>
+            <p>
+              Tenha as informações importantes do seu negócio acessíveis no seu
+              dispositivo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="como-funciona" id="como-funciona">
+        <div class="secao-titulo">
+          <span>Como funciona</span>
+          <h2>Comece a organizar o seu negócio em poucos passos</h2>
+        </div>
+
+        <div class="passos">
+          <div class="passo">
+            <span>01</span>
+            <h3>Crie a sua conta</h3>
+            <p>Registe-se no Smart Luny e prepare o seu espaço de gestão</p>
+          </div>
+
+          <div class="passo">
+            <span>02</span>
+            <h3>Registe as movimentações</h3>
+            <p>
+              Registe receitas, despesas e itens do seu negócio de forma simples
+              e organizada.
+            </p>
+          </div>
+
+          <div class="passo">
+            <span>03</span>
+            <h3>Acompanhe o seu negócio</h3>
+            <p>
+              Consulte o saldo, histórico e movimentações para compreender
+              melhor a atividade do seu negócio
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h2>Comece a organizar o seu negócio hoje</h2>
+        <p>
+          Crie a sua conta e tenha uma forma mais simples de acompanhar as
+          finanças do seu negócio.
+        </p>
+      </section>
+    </main>
+
+    <footer class="rodape">
+      <p>Smart Luny © v1.0 2026</p>
+    </footer>
+
+    <button id="botaoAssistenteSmart" class="botao-assistente-smart" type="button" aria-label="Abrir Assistente Smart" aria-expanded="false">
+        <span>✦</span>
+        <span>Assistente Smart</span>
+    </button>
+
+    <section id="janelaAssistenteSmart" class="janela-assistente-smart" aria-hidden="true">
+        <header class="cabecalho-assistente-smart">
+            <div class="identidade-assistente-smart">
+                <div class="icone-assistente-smart">✦</div>
+                <div>
+                    <strong>Assistente Smart</strong>
+                    <span>Assistente virtual</span>
+                </div>
+            </div>
+            <div class="acoes-assistente-smart">
+                <button id="minimizarAssistenteSmart" type="button" aria-label="Minimizar">−</button>
+                <button id="fecharAssistenteSmart" type="button" aria-label="Fechar">×</button>
+            </div>
+        </header>
+
+        <div id="mensagensAssistenteSmart" class="mensagens-assistente-smart"></div>
+
+        <form id="formularioAssistenteSmart" class="formulario-assistente-smart">
+            <input id="inputAssistenteSmart" type="text" placeholder="Escreve a tua mensagem..." autocomplete="off" required>
+            <button id="enviarAssistenteSmart" type="submit" aria-label="Enviar mensagem">➤</button>
+        </form>
+    </section>
+
+    <script>
+        const SENHA_CORRETA = "luny2026"; 
+
+        if (localStorage.getItem("smart_luny_acesso") === "liberado") {
+            document.getElementById("bloqueioSeguranca").style.display = "none";
+        }
+
+        function verificarSenha() {
+            const senhaDigitada = document.getElementById("senhaAcesso").value;
+            if (senhaDigitada === SENHA_CORRETA) {
+                localStorage.setItem("smart_luny_acesso", "liberado");
+                document.getElementById("bloqueioSeguranca").style.display = "none";
+            } else {
+                document.getElementById("erroSenha").style.display = "block";
+            }
+        }
+    </script>
+
+    <script src="./js/script.js"></script>
+    <script type="module" src="./js/visitas.js"></script>
+
+    <script type="module">
+      import { supabase } from "./supabase.js";
+
+      async function verificarSessao() {
+        const { data, error } = await supabase.auth.getSession();
+
+        if (error) {
+          console.error("Erro ao verificar sessão:", error);
+          document.body.style.visibility = "visible";
+          return;
+        }
+
+        const session = data?.session;
+
+        if (!session?.user) {
+          document.body.style.visibility = "visible";
+          return;
+        }
+
+        const user = session.user;
+
+        const { data: perfil, error: perfilError } = await supabase
+          .from("perfis")
+          .select("nome_empresa")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (perfilError) {
+          console.error("Erro ao verificar perfil:", perfilError);
+          document.body.style.visibility = "visible";
+          return;
+        }
+
+        if (!perfil?.nome_empresa) {
+          window.location.replace("meu-negocio.html");
+          return;
+        }
+
+        window.location.replace("inicio.html");
+      }
+
+      verificarSessao();
+    </script>
+
+    <script>
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener("copy", function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener("cut", function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (
+          (e.ctrlKey || e.metaKey) &&
+          ["c", "x", "u", "s", "a"].includes(e.key.toLowerCase())
+        ) {
+          e.preventDefault();
+        }
+
+        if (e.key === "F12") {
+          e.preventDefault();
+        }
+
+        if (
+          e.ctrlKey &&
+          e.shiftKey &&
+          ["i", "j", "c"].includes(e.key.toLowerCase())
+        ) {
+          e.preventDefault();
+        }
+      });
+    </script>
+
+    <script type="module" src="./js/assistente-smart.js"></script>
+  </body>
+</html>n

@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+    background: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 550px;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+    text-align: center;
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-container input,
+.login-container select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.politica-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 5px 0 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.politica-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 2px 0 0;
+    padding: 0;
+    flex: 0 0 16px;
+    cursor: pointer;
+}
+
+.politica-checkbox span {
+    flex: 1;
+}
+
+.politica-checkbox a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.login-container button {
+    width: 100%;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-container button:hover {
+    opacity: 0.9;
+}
+
+.login-container button:disabled {
+    background: #0d6efd;
+    color: white;
+    cursor: not-allowed;
+}
+
+.google-btn {
+    margin-top: 10px;
+    background: #ffffff;
+    color: #1f1f1f;
+    border: 1px solid #d0d7de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.google-btn:hover {
+    background: #f8f9fa;
+}
+
+.google-btn:disabled {
+    background: #ffffff;
+    color: #1f1f1f;
+    border: 1px solid #d0d7de;
+    cursor: not-allowed;
+}
+
+.google-btn img {
+    flex: 0 0 auto;
+}
+
+.login-container a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: bold;
+}

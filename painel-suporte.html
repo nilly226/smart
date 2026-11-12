@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1769ff">
+    <title>Área Restrita de Suporte</title>
+    <link rel="stylesheet" href="./css/painel-suporte.css">
+</head>
+<body>
+    <main class="painel-suporte">
+        <header class="cabecalho-suporte">
+            <div>
+                <p class="etiqueta-superior">ÁREA RESTRITA</p>
+                <h1>Equipa de Suporte</h1>
+                <p class="subtitulo">Gestão de conversas e atendimento aos clientes.</p>
+            </div>
+
+            <div class="estado-agente">
+                <span class="indicador-online"></span>
+                <span id="estadoAgente">A verificar acesso...</span>
+            </div>
+        </header>
+
+        <section id="mensagemAcesso" class="mensagem-sistema" hidden></section>
+
+        <section id="areaPainel" hidden>
+            <div class="cartoes-estatisticas">
+                <article class="cartao-estatistica">
+                    <span>Total de conversas</span>
+                    <strong id="totalConversas">0</strong>
+                </article>
+
+                <article class="cartao-estatistica">
+                    <span>Novas</span>
+                    <strong id="totalAbertas">0</strong>
+                </article>
+
+                <article class="cartao-estatistica">
+                    <span>Em atendimento</span>
+                    <strong id="totalAtendimento">0</strong>
+                </article>
+
+                <article class="cartao-estatistica">
+                    <span>Respondidas</span>
+                    <strong id="totalRespondidas">0</strong>
+                </article>
+
+                <article class="cartao-estatistica">
+                    <span>Encerradas</span>
+                    <strong id="totalFechadas">0</strong>
+                </article>
+
+                <article class="cartao-estatistica">
+                    <span>Total de mensagens</span>
+                    <strong id="totalMensagens">0</strong>
+                </article>
+            </div>
+
+            <div class="area-trabalho">
+                <aside class="lista-conversas">
+                    <div class="cabecalho-lista">
+                        <div>
+                            <h2>Conversas</h2>
+                            <p>Pedidos de atendimento</p>
+                        </div>
+
+                        <button id="atualizarConversas" class="botao-icone" type="button" title="Atualizar conversas">
+                            ↻
+                        </button>
+                    </div>
+
+                    <div class="filtros-conversas">
+                        <label for="filtroEstado">Estado</label>
+
+                        <select id="filtroEstado">
+                            <option value="todas">Todas</option>
+                            <option value="aberta">Novas</option>
+                            <option value="em_atendimento">Em atendimento</option>
+                            <option value="respondida">Respondidas</option>
+                            <option value="fechada">Encerradas</option>
+                        </select>
+                    </div>
+
+                    <div id="listaConversas" class="itens-conversas">
+                        <p class="texto-vazio">A carregar conversas...</p>
+                    </div>
+                </aside>
+
+                <section class="detalhes-conversa">
+                    <div id="estadoSemConversa" class="estado-sem-conversa">
+                        <div class="icone-vazio">✉</div>
+                        <h2>Seleciona uma conversa</h2>
+                        <p>As mensagens e os detalhes do atendimento aparecerão aqui.</p>
+                    </div>
+
+                    <div id="areaConversa" hidden>
+                        <header class="cabecalho-conversa">
+                            <div class="informacao-conversa">
+                                <h2 id="assuntoConversa">Conversa</h2>
+                                <p id="identificadorCliente"></p>
+                                <p id="responsavelConversa"></p>
+                            </div>
+
+                            <span id="estadoConversa" class="etiqueta-estado">Aberta</span>
+                        </header>
+
+                        <div class="acoes-conversa">
+                            <button id="assumirConversa" class="botao-principal" type="button">
+                                Assumir atendimento
+                            </button>
+
+                            <button id="encerrarConversa" class="botao-secundario" type="button">
+                                Encerrar conversa
+                            </button>
+
+                            <button id="reabrirConversa" class="botao-secundario" type="button" hidden>
+                                Reabrir conversa
+                            </button>
+                        </div>
+
+                        <div id="mensagensConversa" class="historico-mensagens" aria-live="polite">
+                            <p class="texto-vazio">A carregar mensagens...</p>
+                        </div>
+
+                        <form id="formularioResposta" class="formulario-resposta">
+                            <label for="textoResposta">Responder ao cliente</label>
+
+                            <div class="campo-resposta">
+                                <textarea
+                                    id="textoResposta"
+                                    rows="2"
+                                    maxlength="5000"
+                                    placeholder="Escreve a tua resposta..."
+                                    required
+                                ></textarea>
+
+                                <button id="enviarResposta" class="botao-principal" type="submit">
+                                    Enviar
+                                </button>
+                            </div>
+
+                            <p id="estadoEnvio" class="estado-envio" aria-live="polite"></p>
+                        </form>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="rodape-suporte">
+                <span id="ultimaAtualizacao">A aguardar atualização...</span>
+                <span>Atualização automática a cada 15 segundos</span>
+            </footer>
+        </section>
+    </main>
+
+    <script type="module" src="./js/painel-suporte.js"></script>
+</body>
+</html>

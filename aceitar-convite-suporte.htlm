@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Suporte — Smart Luny</title>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .cartao-convite {
+            max-width: 480px;
+            margin: 60px auto;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid rgba(13,110,253,0.1);
+            border-radius: 16px;
+            box-shadow: 0 7px 22px rgba(33,87,132,0.07);
+            padding: 30px;
+            text-align: center;
+        }
+        .cartao-convite h1 {
+            margin: 0 0 8px;
+            color: #17365d;
+            font-size: 22px;
+        }
+        .cartao-convite p {
+            color: #60758d;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0 0 22px;
+        }
+        .cartao-convite input {
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid #d7e3ef;
+            border-radius: 9px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            margin-bottom: 12px;
+        }
+        .cartao-convite input:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13,110,253,0.07);
+        }
+        .cartao-convite button {
+            width: 100%;
+            min-height: 44px;
+            border: none;
+            border-radius: 9px;
+            background: #0d6efd;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .cartao-convite button:hover { background: #0b5ed7; }
+        .cartao-convite button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .estado-convite {
+            margin-top: 16px;
+            font-size: 13px;
+            min-height: 18px;
+        }
+        .estado-convite.erro { color: #dc2626; }
+        .estado-convite.ok { color: #16a34a; }
+    </style>
+</head>
+<body>
+    <main class="content">
+        <div class="cartao-convite">
+            <h1><i class="fa-solid fa-envelope-open-text"></i> Convite de Suporte</h1>
+            <p id="mensagem">A validar o seu convite…</p>
+
+            <div id="formulario" style="display:none">
+                <input id="campoEmail" type="email" placeholder="O seu email" autocomplete="email">
+                <button id="btnAceitar" type="button">Entrar no suporte</button>
+            </div>
+
+            <div id="estado" class="estado-convite"></div>
+        </div>
+    </main>
+
+    <script type="module" src="./js/aceitar-convite-suporte.js"></script>
+</body>
+</html>

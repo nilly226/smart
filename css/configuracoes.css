@@ -1,0 +1,348 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Times New Roman", Times, serif;
+    color: #17365d;
+    background: linear-gradient(
+        120deg,
+        #eef7ff,
+        #d8ecff,
+        #f4f9ff,
+        #cfe7ff,
+        #e8f4ff,
+        #d7ebff
+    );
+    background-size: 400% 400%;
+    animation: fundoAzul 18s ease infinite;
+}
+
+@keyframes fundoAzul {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 0%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.layout {
+    min-height: 100vh;
+    position: relative;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 30px 30px 100px;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 28px;
+    background: transparent;
+}
+
+.logo-topo {
+    width: 135px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.cabecalho-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cabecalho-texto h2 {
+    margin: 0 0 6px;
+    color: #0d6efd;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.cabecalho-texto p {
+    margin: 0;
+    color: #60758d;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.config-list {
+    width: 100%;
+    max-width: 850px;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.config-item {
+    width: 100%;
+    min-height: 82px;
+    padding: 18px 22px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    font-family: "Times New Roman", Times, serif;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.config-item:last-child {
+    border-bottom: none;
+}
+
+.config-item:hover {
+    background: #f5f8fc;
+}
+
+.config-item h3 {
+    margin: 0 0 5px;
+    color: #1f2937;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.config-item p {
+    margin: 0;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.config-item > span {
+    color: #64748b;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.stock-item {
+    cursor: default;
+}
+
+.stock-item:hover {
+    background: #ffffff;
+}
+
+.stock-toggle {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.stock-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.stock-slider {
+    position: absolute;
+    inset: 0;
+    background: #cbd5e1;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.stock-slider::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 3px;
+    top: 3px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stock-toggle input:checked + .stock-slider {
+    background: #1565c0;
+}
+
+.stock-toggle input:checked + .stock-slider::before {
+    transform: translateX(22px);
+}
+
+.feedback-card {
+    background: #ffffff;
+}
+
+.feedback-card:hover {
+    background: #f5f8fc;
+}
+
+.feedback-card h3 {
+    color: #1f2937;
+}
+
+.feedback-card p {
+    color: #64748b;
+}
+
+.feedback-card > span {
+    color: #64748b;
+}
+
+#painelAdminBtn {
+    display: none;
+}
+
+#logoutConfig {
+    color: #b91c1c;
+}
+
+#logoutConfig h3 {
+    color: #b91c1c;
+}
+
+#logoutConfig p {
+    color: #7f1d1d;
+}
+
+#logoutConfig > span {
+    color: #b91c1c;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1000;
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.bottom-nav a {
+    text-decoration: none;
+    color: #64748b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 12px;
+    min-width: 60px;
+    height: 100%;
+}
+
+.bottom-nav a.active {
+    color: #0d6efd;
+}
+
+.bottom-nav a:hover {
+    color: #0d6efd;
+}
+
+.bottom-nav .nav-icon {
+    font-size: 23px;
+    line-height: 1;
+}
+
+@media (max-width: 800px) {
+    .content {
+        padding: 25px 20px 100px;
+    }
+
+    .page-header {
+        gap: 16px;
+    }
+
+    .logo-topo {
+        width: 105px;
+    }
+
+    .cabecalho-texto h2 {
+        font-size: 24px;
+    }
+
+    .cabecalho-texto p {
+        font-size: 14px;
+    }
+
+    .config-list {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .content {
+        padding: 20px 15px 95px;
+    }
+
+    .page-header {
+        gap: 14px;
+    }
+
+    .logo-topo {
+        width: 85px;
+    }
+
+    .cabecalho-texto h2 {
+        font-size: 22px;
+    }
+
+    .cabecalho-texto p {
+        font-size: 13px;
+    }
+
+    .config-item {
+        min-height: 76px;
+        padding: 16px;
+    }
+
+    .config-item h3 {
+        font-size: 17px;
+    }
+
+    .config-item p {
+        font-size: 14px;
+    }
+
+    .config-item > span {
+        font-size: 26px;
+    }
+
+    .bottom-nav {
+        height: 65px;
+    }
+
+    .bottom-nav a {
+        min-width: 50px;
+        font-size: 11px;
+    }
+
+    .bottom-nav .nav-icon {
+        font-size: 21px;
+    }
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Histórico - Smart Luny</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/historico.css">
+    <link rel="stylesheet" href="css/mobile.css">
+
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png">
+</head>
+
+<body>
+    
+<div class="layout">
+
+    <main class="content">
+
+        <header class="page-header">
+            <img
+                src="./assets/imagem logo.png"
+                alt="Smart Luny"
+                class="logo-topo"
+            >
+
+            <div class="cabecalho-texto">
+                <h2 id="tituloHistorico">Histórico</h2>
+
+                <p id="descricaoHistorico">
+                    Consulte e analise as movimentações do seu negócio.
+                </p>
+            </div>
+        </header>
+
+
+        <section class="filtros-card">
+
+            <div class="filtros-header">
+
+                <div>
+
+                    <h3 id="tituloFiltros">
+                        Filtrar histórico
+                    </h3>
+
+                    <p id="descricaoFiltros">
+                        Escolha o período, o tipo de movimentação ou pesquise no histórico.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="filtros-grid">
+
+                <div class="campo-filtro">
+
+                    <label for="filtroPeriodo" id="labelPeriodo">
+                        Período
+                    </label>
+
+                    <select id="filtroPeriodo">
+
+                        <option value="todos" id="opcaoTodos">
+                            Todo o histórico
+                        </option>
+
+                        <option value="hoje" id="opcaoHoje">
+                            Hoje
+                        </option>
+
+                        <option value="7dias" id="opcao7Dias">
+                            Últimos 7 dias
+                        </option>
+
+                        <option value="30dias" id="opcao30Dias">
+                            Últimos 30 dias
+                        </option>
+
+                        <option value="mes" id="opcaoMes">
+                            Este mês
+                        </option>
+
+                        <option value="mesAnterior" id="opcaoMesAnterior">
+                            Mês anterior
+                        </option>
+
+                        <option value="personalizado" id="opcaoPersonalizado">
+                            Personalizado
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo-filtro">
+
+                    <label for="filtroTipo" id="labelTipo">
+                        Tipo
+                    </label>
+
+                    <select id="filtroTipo">
+
+                        <option value="todos" id="tipoTodos">
+                            Todas
+                        </option>
+
+                        <option value="Receita" id="tipoReceita">
+                            Receitas
+                        </option>
+
+                        <option value="Despesa" id="tipoDespesa">
+                            Despesas
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo-filtro campo-pesquisa">
+
+                    <label for="pesquisaHistorico" id="labelPesquisa">
+                        Pesquisar
+                    </label>
+
+                    <input
+                        type="search"
+                        id="pesquisaHistorico"
+                        placeholder="Pesquisar movimentação..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="filtro-personalizado"
+                id="filtroPersonalizado"
+                hidden
+            >
+
+                <div class="campo-filtro">
+
+                    <label for="dataInicio" id="labelDataInicio">
+                        Data inicial
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataInicio"
+                    >
+
+                </div>
+
+
+                <div class="campo-filtro">
+
+                    <label for="dataFim" id="labelDataFim">
+                        Data final
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataFim"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="acoes-filtros">
+
+                <button
+                    type="button"
+                    id="btnAplicarFiltros"
+                    title="Guardar filtro"
+                    aria-label="Guardar filtro"
+                >
+                    ↓
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="analise-periodo-card">
+
+            <div class="analise-header">
+
+                <div>
+
+                    <h3 id="tituloAnalisePeriodo">
+                        Análise do período
+                    </h3>
+
+                    <p id="descricaoAnalisePeriodo">
+                        Veja os principais movimentos encontrados no período selecionado.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analise-grid">
+
+                <article class="analise-item">
+
+                    <span id="labelMovimentacoesPeriodo">
+                        Movimentações
+                    </span>
+
+                    <strong id="movimentacoesPeriodo">
+                        0
+                    </strong>
+
+                </article>
+
+
+                <article class="analise-item">
+
+                    <span id="labelMaiorReceita">
+                        Maior receita
+                    </span>
+
+                    <strong id="maiorReceita">
+                        0 MT
+                    </strong>
+
+                </article>
+
+
+                <article class="analise-item">
+
+                    <span id="labelMaiorDespesa">
+                        Maior despesa
+                    </span>
+
+                    <strong id="maiorDespesa">
+                        0 MT
+                    </strong>
+
+                </article>
+
+
+                <article class="analise-item">
+
+                    <span id="labelMediaMovimentacoes">
+                        Média por movimentação
+                    </span>
+
+                    <strong id="mediaMovimentacoes">
+                        0 MT
+                    </strong>
+
+                </article>
+
+            </div>
+
+
+            <div class="analise-conclusao">
+
+                <span id="tituloConclusaoAnalise">
+                    Análise
+                </span>
+
+                <p id="textoConclusaoAnalise">
+                    Selecione um período para visualizar a análise.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="comparacao-periodos-card">
+
+            <div class="comparacao-header">
+
+                <div>
+
+                    <h3 id="tituloComparacaoPeriodos">
+                        Comparação de períodos
+                    </h3>
+
+                    <p id="descricaoComparacaoPeriodos">
+                        Compare o período seleccionado com o período anterior.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="comparacao-grid">
+
+                <article class="comparacao-item">
+
+                    <span id="labelComparacaoReceitas">
+                        Receitas
+                    </span>
+
+                    <strong id="comparacaoReceitas">
+                        —
+                    </strong>
+
+                    <small id="variacaoReceitas">
+                        Sem comparação
+                    </small>
+
+                </article>
+
+
+                <article class="comparacao-item">
+
+                    <span id="labelComparacaoDespesas">
+                        Despesas
+                    </span>
+
+                    <strong id="comparacaoDespesas">
+                        —
+                    </strong>
+
+                    <small id="variacaoDespesas">
+                        Sem comparação
+                    </small>
+
+                </article>
+
+
+                <article class="comparacao-item">
+
+                    <span id="labelComparacaoMovimentacoes">
+                        Movimentações
+                    </span>
+
+                    <strong id="comparacaoMovimentacoes">
+                        —
+                    </strong>
+
+                    <small id="variacaoMovimentacoes">
+                        Sem comparação
+                    </small>
+
+                </article>
+
+            </div>
+
+
+            <div class="comparacao-conclusao">
+
+                <span id="tituloConclusaoComparacao">
+                    Evolução
+                </span>
+
+                <p id="textoConclusaoComparacao">
+                    Selecione um período para comparar a evolução com o período anterior.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="grafico-card">
+
+            <div class="grafico-header">
+
+                <div>
+
+                    <h3 id="tituloGrafico">
+                        Receitas e Despesas
+                    </h3>
+
+                    <p id="descricaoGrafico">
+                        Acompanhe a evolução das suas receitas e despesas no período selecionado.
+                    </p>
+
+                </div>
+
+
+                <div class="legenda-grafico">
+
+                    <span class="legenda-item">
+
+                        <span class="legenda-ponto receita"></span>
+
+                        <span id="legendaReceitas">
+                            Receitas
+                        </span>
+
+                    </span>
+
+
+                    <span class="legenda-item">
+
+                        <span class="legenda-ponto despesa"></span>
+
+                        <span id="legendaDespesas">
+                            Despesas
+                        </span>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="grafico-barras">
+
+                <div
+                    class="escala-barras"
+                    id="escalaBarras"
+                ></div>
+
+
+                <div
+                    class="barras-container"
+                    id="barrasContainer"
+                ></div>
+
+            </div>
+
+
+            <div
+                class="datas-grafico"
+                id="datasGrafico"
+            ></div>
+
+        </section>
+
+
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <div>
+
+                    <h3 id="tituloListaHistorico">
+                        Histórico de movimentações
+                    </h3>
+
+                    <p id="contadorHistorico">
+                        0 movimentações
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th id="colunaData">
+                                Data
+                            </th>
+
+                            <th id="colunaTipo">
+                                Tipo
+                            </th>
+
+                            <th id="colunaCategoria">
+                                Categoria
+                            </th>
+
+                            <th id="colunaValor">
+                                Valor
+                            </th>
+
+                            <th id="colunaDescricao">
+                                Descrição
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="historicoLista">
+
+                        <tr>
+
+                            <td colspan="5">
+                                Carregando...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                class="historico-vazio"
+                id="historicoVazio"
+                hidden
+            >
+
+                <div class="historico-vazio-icon">
+                    ↗
+                </div>
+
+                <h3 id="tituloHistoricoVazio">
+                    Nenhuma movimentação encontrada
+                </h3>
+
+                <p id="descricaoHistoricoVazio">
+                    Não existem movimentações que correspondam aos filtros selecionados.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<nav class="bottom-nav">
+
+    <a href="inicio.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 10.5L12 3l9 7.5"></path>
+            <path d="M5 9.5V21h14V9.5"></path>
+            <path d="M9 21v-7h6v7"></path>
+        </svg>
+        <span id="menuInicio">Início</span>
+    </a>
+
+    <a href="transacoes.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 18h16"></path>
+            <path d="M8 3v6"></path>
+            <path d="M16 15v6"></path>
+        </svg>
+        <span id="menuTransacoes">Transações</span>
+    </a>
+
+    <a href="itens.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7l8-4 8 4-8 4-8-4z"></path>
+            <path d="M4 7v10l8 4 8-4V7"></path>
+            <path d="M12 11v10"></path>
+        </svg>
+        <span id="menuItens">Itens</span>
+    </a>
+
+    <a href="historico.html" class="ativo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+            <path d="M3 4v5h5"></path>
+            <path d="M12 7v5l3 2"></path>
+        </svg>
+        <span id="menuHistorico">Histórico</span>
+    </a>
+
+    <a href="configuracoes.html">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+        </svg>
+        <span id="menuConfiguracoes">Configurações</span>
+    </a>
+
+</nav>
+
+
+<script
+    type="module"
+    src="js/historico.js"
+></script>
+
+</body>
+</html>

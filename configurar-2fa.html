@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Configurar verificação em dois passos - Smart Contas</title>
+
+    <link rel="stylesheet" href="css/login.css" />
+
+    <link rel="icon" href="./assets/imagem logo.png" type="image/png" />
+  </head>
+
+  <body>
+    <div class="login-container">
+      <h1>Verificação em dois passos</h1>
+
+      <p>Proteja a sua conta usando uma aplicação autenticadora.</p>
+
+      <div id="carregando">
+        <p>A preparar a configuração...</p>
+      </div>
+
+      <div id="configuracao" style="display: none">
+        <p>Abra a sua aplicação autenticadora e leia o código QR abaixo.</p>
+
+        <div
+          id="qrCode"
+          style="display: flex; justify-content: center; margin: 20px 0"
+        ></div>
+
+        <p>Se não conseguir ler o QR code, use esta chave manualmente:</p>
+
+        <p
+          id="chaveManual"
+          style="word-break: break-all; font-weight: bold"
+        ></p>
+
+        <input
+          type="text"
+          id="codigo"
+          placeholder="Código de 6 dígitos"
+          inputmode="numeric"
+          maxlength="6"
+          autocomplete="one-time-code"
+        />
+
+        <button id="ativar2FA" type="button">
+          Activar verificação em dois passos
+        </button>
+
+        <p id="mensagem"></p>
+      </div>
+    </div>
+
+    <script type="module" src="./js/configurar-2fa.js"></script>
+  </body>
+</html>

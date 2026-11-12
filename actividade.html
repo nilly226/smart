@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="stylesheet"
+      href="css/actividade.css"
+    />
+
+    <link
+      rel="icon"
+      href="./assets/imagem logo.png"
+      type="image/png"
+    />
+
+    <title>Smart Luny</title>
+  </head>
+
+  <body>
+    <div class="negocio-container">
+
+      <p class="pergunta-negocio">
+        Diga-nos o que o seu negócio faz
+      </p>
+
+      <form id="atividade-form">
+
+        <input
+          type="text"
+          id="atividadeNegocio"
+          placeholder="Ex.: Venda de roupas e calçados"
+          autocomplete="organization-title"
+          required
+        />
+
+        <button
+          type="submit"
+          aria-label="Continuar"
+        >
+          ➤
+        </button>
+
+      </form>
+
+    </div>
+
+    <script
+      type="module"
+      src="./js/actividade.js"
+    ></script>
+  </body>
+</html>
